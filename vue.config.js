@@ -15,6 +15,6 @@ module.exports = {
       }
     },
     publicPath: process.env.NODE_ENV === 'production'
-    ? 'https://widget.forehand.se/knocouttv/dist/'
+    ? 'https://live.scorebee.com/cricket-score/dist/'
     : '/'
   }

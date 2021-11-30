@@ -1,7 +1,7 @@
 export default {
 	data() {
 		return {
-            siteUri: 'http://mobileapi.scorebee.com/api/',
+            siteUri: 'https://mobileapi.scorebee.com/api/',
             //siteUri: 'http://padelmobile.localhost/api/tv/',
             // imageUrl : 'https://backoffice.forehand.se'
 		}
