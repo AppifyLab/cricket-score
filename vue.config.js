@@ -15,6 +15,6 @@ module.exports = {
       }
     },
     publicPath: process.env.NODE_ENV === 'production'
-    ? 'https://live.scorebee.com/cricket-score/dist/'
+    ? 'http://live.scorebee.com/cricket-score/dist/'
     : '/'
   }
