@@ -20,7 +20,7 @@
 							<li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
 								<span class="_tv_score_arrow" v-if="item.is_on_strike==1"></span>
 								<h2 class="_tv_score_plyr_nm _tv_score_plyr_actv">
-									{{item.batter.first_name}}
+									{{item.batter.first_name | playerName}}
 								</h2>
 								<p class="_tv_score_num">
 									{{item.runs_achieved}}
@@ -64,7 +64,7 @@
 
 						<div class="_tv_score_mdl2_btm">
 							<p class="_tv_score_rate">
-								90.65
+								{{this.currentRunRate}}
 							</p>
 						</div>
 					</div>
@@ -75,7 +75,7 @@
 							<li>
 								<h2 class="_tv_score_plyr_nm">
 									<template v-if="data.bowler && data.bowler.bowler">
-                    {{data.bowler.bowler.first_name}}
+                    {{data.bowler.bowler.first_name | playerName}}
                   </template>
 								</h2>
 								<p class="_tv_score_num" v-if="data.bowler">
@@ -86,11 +86,17 @@
 								</p>
 							</li>
 							<li class="_scre_crcle">
-								<!-- <p class="_tv_score_crcl" v-for="(item,index) in over"
-                >
-									
-								</p> -->
-								<p class="_tv_score_crcl _active4">
+								<p class="_tv_score_crcl" v-for="(item,index) in over"
+                :class="item.circle_value==0 ? ''
+                : item.circle_value==4 ? '_active4'
+                : item.circle_value==6? '_active6'
+                : item.circle_value==w? '_active_w'
+                : item.circle_value==n6? '_active6'
+                :''
+                ">
+									{{item.runs}}
+								</p>
+								<!-- <p class="_tv_score_crcl _active4">
 									4
 								</p>
 								<p class="_tv_score_crcl _active6">
@@ -101,7 +107,7 @@
 								</p>
 								<p class="_tv_score_crcl _active6">
 									n6
-								</p>
+								</p> -->
 							</li>
 						</ul>
 					</div>
@@ -139,15 +145,18 @@ export default {
   methods: {
     
   },
+  filters:{
+    playerName(name){
+      name=name.substr(1,10);
+      return name
+    }
+  },
   async created() {
-    console.log(this.$route)
-    console.log(this.$router)
-    // if(this.$route.params.id){
-    //   console.log(this.$route.params.id)
-    // }
+    // 379
+    if(this.$route.query && this.$route.query.matchId){
       const res = await this.callApi(
         "get",
-        `match/getMatchLiveScore/379`
+        `match/getMatchLiveScore/${this.$route.query.matchId}`
       )
       if (res.status == 200) {
         // console.log('hjgjhgj')
@@ -157,10 +166,10 @@ export default {
         }
         if(this.data.score){
           let runRate=this.data.score.total_runs/this.data.score.total_over
+          this.currentRunRate = runRate.toFixed(2);
         }
-        
-        
       }
+    }
   },
 };
 </script>
