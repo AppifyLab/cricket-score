@@ -20,9 +20,9 @@
                    {{item.batter_name}}
                   </h2>
                   <p class="_tv_score_num">
-                    9
+                    {{item.runs_achieved}}
                     <span class="_tv_score_ball">
-                      18
+                      {{item.balls_faced}}
                     </span>
                   </p>
                 </li>
@@ -62,7 +62,7 @@
               <ul class="_tv_score_mdl1_ul">
                 <li>
                   <h2 class="_tv_score_plyr_nm">
-                    shaheen
+                    <template v-if="data.bowler">{{data.bowler.bowler_name}}</template>
                   </h2>
                   <p class="_tv_score_num">
                     2-61
@@ -126,7 +126,7 @@ export default {
     }
       const res = await this.callApi(
         "get",
-        `match/getInningsLiveScore/19`
+        `match/getInningsLiveScore/15`
       );
       if (res.status === 200) {
         console.log('hjgjhgj')
