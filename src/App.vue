@@ -87,14 +87,14 @@
 							</li>
 							<li class="_scre_crcle">
 								<p class="_tv_score_crcl" v-for="(item,index) in over"
-                :class="item.circle_value==0 ? ''
-                : item.circle_value==4 ? '_active4'
-                : item.circle_value==6? '_active6'
-                : item.circle_value==w? '_active_w'
-                : item.circle_value==n6? '_active6'
-                :''
-                ">
-									{{item.runs}}
+                                    :class="item.circle_value==0 ? ''
+                                    : item.circle_value==4 ? '_active4'
+                                    : item.circle_value==6? '_active6'
+                                    : item.circle_value=='w' || item.down_circle_value=='w'? '_active_w'
+                                    : item.circle_value=='n6'? '_active6'
+                                    :''
+                                    " :key="index">
+									{{item.circle_value}}
 								</p>
 								<!-- <p class="_tv_score_crcl _active4">
 									4
