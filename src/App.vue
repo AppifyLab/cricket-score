@@ -183,9 +183,9 @@ body{
    
  }
  ._tv_scr_all{
- background: #b57070;
+ /* background: #b57070;
  height: 100vh;
- font-family:Poppins;
+ font-family:Poppins; */
  }
 
  /* ==== TV SCORE CARD ==== */
@@ -195,7 +195,7 @@ body{
      display: flex;
      height: 79px;
      position: fixed;
-     bottom: 30px;
+     /* bottom: 30px; */
      left: 0;
      width: 100%;
  }
