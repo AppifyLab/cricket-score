@@ -38,33 +38,43 @@
 						<div class="_tv_score_mdl2_top">
 							<p class="_tv_score_cntry1">
 								<template v-if="data.batting_team">
-                  {{data.batting_team.team_short_name}}
-                </template>
+                                    {{data.batting_team.team_short_name}}
+                                </template>
 								<span>v</span>
 							</p>
 							<p class="_tv_score_cntry2">
 								<template v-if="data.bowling_team">
-                  {{data.bowling_team.team_short_name}}
-                </template>
+                                {{data.bowling_team.team_short_name}}
+                                </template>
 							</p>
 							<p class="_tv_score_cntry_scre">
-                <template v-if="data.score">
-							  	{{data.score.total_runs}} - {{data.score.total_wicket}}
-                </template>
+                                <template v-if="data.score">
+                                    {{data.score.total_runs}} - {{data.score.total_wicket}}
+                                </template>
 							</p>
 							<p class="_tv_score_pwrply">
-								P2
+								{{data.power_play_type}}
 							</p>
 							<p class="_tv_score_ovr">
-                <template v-if="data.score">
-								{{data.score.total_over}}
-                 </template>
+                                <template v-if="data.score">
+                                    {{data.score.total_over}}
+                                </template>
 							</p>
 						</div>
 
 						<div class="_tv_score_mdl2_btm">
-							<p class="_tv_score_rate">
-								{{this.currentRunRate}}
+							<p class="_tv_score_rate" v-if="data">
+                                <template v-if="data.is_first_innings==1">
+                                    <span v-if="data.score && data.score.total_over<5">
+                                        {{data.toss}}
+                                    </span>
+                                    <span v-else>
+                                         RR - {{currentRunRate}}
+                                    </span>
+                                </template>
+                                <template v-else>
+                                   TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}}
+                                </template>
 							</p>
 						</div>
 					</div>
@@ -75,8 +85,8 @@
 							<li>
 								<h2 class="_tv_score_plyr_nm">
 									<template v-if="data.bowler && data.bowler.bowler">
-                    {{data.bowler.bowler.first_name | playerName}}
-                  </template>
+                                        {{data.bowler.bowler.first_name | playerName}}
+                                    </template>
 								</h2>
 								<p class="_tv_score_num" v-if="data.bowler">
 									{{data.bowler.wickets}}-{{data.bowler.runs_gave}}
@@ -86,16 +96,20 @@
 								</p>
 							</li>
 							<li class="_scre_crcle">
-								<p class="_tv_score_crcl" v-for="(item,index) in over"
-                                    :class="item.circle_value==0 ? ''
-                                    : item.circle_value==4 ? '_active4'
-                                    : item.circle_value==6? '_active6'
-                                    : item.circle_value=='w' || item.down_circle_value=='w'? '_active_w'
-                                    : item.circle_value=='n6'? '_active6'
-                                    :''
-                                    " :key="index">
-									{{item.circle_value}}
-								</p>
+                                <div v-for="(item,index) in over" :key="index" class="_scre_crcle_inner">
+                                    <p class="_tv_score_crcl"
+                                        :class="item.circle_value==0 ? ''
+                                        : item.circle_value==4 ? '_active4'
+                                        : item.circle_value==6? '_active6'
+                                        : item.circle_value=='W' || item.down_circle_value=='W'? '_active_w'
+                                        : item.circle_value=='n6'? '_active6'
+                                        :''
+                                        " >
+                                        {{item.circle_value}}
+                                    </p>
+                                    <!-- <span class="_tv_score_crcl_spn">0</span> -->
+                                    <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
+                                </div>
 								<!-- <p class="_tv_score_crcl _active4">
 									4
 								</p>
@@ -138,7 +152,8 @@ export default {
     return {
      data:{},
      over:[],
-     currentRunRate:0
+     currentRunRate:0,
+     requireRunRate:0,
     };
   },
 
@@ -146,7 +161,7 @@ export default {
      async getData(){
        const res = await this.callApi(
         "get",
-        `match/getMatchLiveScore/${this.$route.query.matchId}`
+        `match/getStreamMatchLiveScore/${this.$route.query.matchId}`
       )
       if (res.status == 200) {
         // console.log('hjgjhgj')
@@ -155,8 +170,25 @@ export default {
           this.over=this.data.bowler.over_details
         }
         if(this.data.score){
-          let runRate=this.data.score.total_runs/this.data.score.total_over
-          this.currentRunRate = runRate.toFixed(2);
+           let integr = Math.floor(this.data.score.total_over)
+           let decimal = this.data.score.total_over - Math.floor(this.data.score.total_over)
+           decimal= (decimal*10)/6
+
+            let totalBall=integr + decimal 
+
+            if(totalBall==0){
+                this.currentRunRate=0.00
+                this.requireRunRate=0.00
+            }else{
+                this.currentRunRate=this.data.score.total_runs/totalBall
+                this.currentRunRate=this.currentRunRate.toFixed(2);
+
+
+                let leftBall= this.data.match_overs-totalBall
+                let reqrunRate=this.data.target/leftBall
+                this.requireRunRate = reqrunRate.toFixed(2);
+            }
+            
         }
       }
 
@@ -170,7 +202,12 @@ export default {
   },
   filters:{
     playerName(name){
-      name=name.substr(1,10);
+      name=name.substr(0,5);
+      let d= name.charAt(6);
+      let reWhiteSpace = new RegExp("\\s+");
+        if (reWhiteSpace.test(d)) {
+            name='...'
+        }
       return name
     }
   },
@@ -203,7 +240,7 @@ body{
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex;
-     height: 79px;
+     height: 83px;
      position: fixed;
      /* bottom: 30px; */
      left: 0;
@@ -485,7 +522,7 @@ body{
  ._tv_score_rate{
      margin: 0;
      color: #fff;
-     font-size: 14px;
+     font-size: 11px;
      line-height: 17px;
  }
  ._scre_crcle {
@@ -533,5 +570,19 @@ body{
 ._scre_crcle ._active_w{
     background: #E84855;
 }
-    
+._tv_score_crcl_spn[data-v-7ba5bd90] {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+}
+._scre_crcle_inner[data-v-7ba5bd90] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: coloum;
+    flex-direction: column;
+    align-items: center;
+}
 </style>
