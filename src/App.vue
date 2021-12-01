@@ -143,18 +143,8 @@ export default {
   },
 
   methods: {
-    
-  },
-  filters:{
-    playerName(name){
-      name=name.substr(1,10);
-      return name
-    }
-  },
-  async created() {
-    // 379
-    if(this.$route.query && this.$route.query.matchId){
-      const res = await this.callApi(
+     async getData(){
+       const res = await this.callApi(
         "get",
         `match/getMatchLiveScore/${this.$route.query.matchId}`
       )
@@ -169,6 +159,26 @@ export default {
           this.currentRunRate = runRate.toFixed(2);
         }
       }
+
+      setTimeout(() =>{
+          this.getData()
+      },1500)
+
+
+
+     }
+  },
+  filters:{
+    playerName(name){
+      name=name.substr(1,10);
+      return name
+    }
+  },
+  async created() {
+    // 379
+    if(this.$route.query && this.$route.query.matchId){
+        this.getData()
+        
     }
   },
 };
