@@ -1,7 +1,10 @@
 export default {
 	data() {
 		return {
-            siteUri: 'http://mobileapi.scorebee.com/api/',
+			
+            // siteUri: 'http://staginapi.duare.net/api/',
+            siteUri: 'http://scorebee-api.test/api/',
+            // siteUri: 'http://mobileapi.scorebee.com/api/',
             //siteUri: 'http://padelmobile.localhost/api/tv/',
             // imageUrl : 'https://backoffice.forehand.se'
 		}

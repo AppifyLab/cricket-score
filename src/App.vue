@@ -1,5 +1,6 @@
 <template>
   <div>
+      <!-- logo_scoor.svg -->
     <div class="_tv_scr_all">
         <div class="_tv_score">
 			<!-- left -->
@@ -37,15 +38,17 @@
 					<div class="_tv_score_mdl2_inr">
 						<div class="_tv_score_mdl2_top">
 							<p class="_tv_score_cntry1">
-								<template v-if="data.batting_team">
-                                    {{data.batting_team.team_short_name}}
+                                <template v-if="data.bowling_team">
+                                {{data.bowling_team.team_short_name}}
                                 </template>
+								
 								<span>v</span>
 							</p>
 							<p class="_tv_score_cntry2">
-								<template v-if="data.bowling_team">
-                                {{data.bowling_team.team_short_name}}
+                                <template v-if="data.batting_team">
+                                    {{data.batting_team.team_short_name}}
                                 </template>
+								
 							</p>
 							<p class="_tv_score_cntry_scre">
                                 <template v-if="data.score">
@@ -95,21 +98,37 @@
 									</span>
 								</p>
 							</li>
-							<li class="_scre_crcle">
-                                <div v-for="(item,index) in over" :key="index" class="_scre_crcle_inner">
-                                    <p class="_tv_score_crcl"
-                                        :class="item.circle_value==0 ? ''
-                                        : item.circle_value==4 ? '_active4'
+							<li class="_scre_crcle" v-if="data.bowler && data.bowler.over_details">
+                                <div v-for="(item,index) in data.bowler.over_details" :key="index" class="_scre_crcle_inner">
+                                    
+                                     <p class="_tv_score_crcl _active_w" v-if="item.is_wicket">
+                                        {{item.circle_value}}
+                                    </p>
+
+                                    <p class="_tv_score_crcl _active6" 
+                                    v-else-if="item.boundary_type && item.boundary_type=='SIX'">
+                                        {{item.circle_value}}
+                                    </p>
+                                     <p class="_tv_score_crcl _active4"  v-else-if="item.boundary_type && item.boundary_type=='FOUR'">
+                                        {{item.circle_value}}
+                                    </p>
+                                      <p class="_tv_score_crcl"  v-else>
+                                        {{item.circle_value}}
+                                    </p>
+                                    
+                                    
+                                    <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
+                                </div>
+
+                                <!-- <p class="_tv_score_crcl" :class="item.circle_value==0 ? '': item.circle_value==4 ? '_active4'
                                         : item.circle_value==6? '_active6'
-                                        : item.circle_value=='W' || item.down_circle_value=='W'? '_active_w'
+                                        : item.is_wicket==1?'_active_w'
                                         : item.circle_value=='n6'? '_active6'
                                         :''
                                         " >
+                                    
                                         {{item.circle_value}}
-                                    </p>
-                                    <!-- <span class="_tv_score_crcl_spn">0</span> -->
-                                    <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
-                                </div>
+                                    </p> -->
 								<!-- <p class="_tv_score_crcl _active4">
 									4
 								</p>
@@ -132,11 +151,14 @@
 
 			<!-- right -->
 			<div class="_tv_score_r8">
-				<h2 class="_tv_tem_nam">
+				<!-- <h2 class="_tv_tem_nam">
 					<template v-if="data.bowling_team">
             {{data.bowling_team.team_name}}
           </template>
-				</h2>
+				</h2> -->
+                <div class="_tv_score_logo">
+                    <img src="/img/logo_scoor.svg" alt="logo" class="_logo_image">
+                </div>
 			</div>
 		    <!-- right -->
 		</div>
@@ -159,9 +181,10 @@ export default {
 
   methods: {
      async getData(){
+        //  getStreamMatchLiveScore_kamran
        const res = await this.callApi(
         "get",
-        `match/getStreamMatchLiveScore/${this.$route.query.matchId}`
+        `match/getStreamMatchLiveScore_kamran/${this.$route.query.matchId}`
       )
       if (res.status == 200) {
         // console.log('hjgjhgj')
@@ -194,7 +217,7 @@ export default {
 
       setTimeout(() =>{
           this.getData()
-      },1500)
+      },6500)
 
 
 
@@ -380,10 +403,10 @@ body{
      border-bottom-right-radius: 20px;
      z-index: 2;
      font-weight: 600;
-     background: -o-linear-gradient(right, rgba(164,44,92,1) 0%, rgba(37,45,128,1) 100%);
-     /* background: linear-gradient(270deg, rgb(203 133 161 / 98%) 0%, rgb(255 255 0) 100%); */
+     /* background: -o-linear-gradient(right, rgba(164,44,92,1) 0%, rgba(37,45,128,1) 100%);
      background: -o-linear-gradient(4deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%);
-     background: linear-gradient(86deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%);
+     background: linear-gradient(86deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%); */
+     background: yellow;
  }
  ._tv_score_pwrply{
     margin: 0;
@@ -584,5 +607,36 @@ body{
     -ms-flex-direction: coloum;
     flex-direction: column;
     align-items: center;
+}
+
+/* RESPONSIVE */
+@media (min-width: 1200px) and (max-width:1520px) { 
+    ._tv_score_mdl1_inr {
+    padding-right: 40px;
+    padding-left: 25px;
+}
+._tv_score_mdl3_inr{
+    padding-left: 40px;
+    padding-right: 25px;
+}
+._tv_score_mdl2{
+    width: 36%;;
+}
+._tv_score_mdl1, ._tv_score_mdl3{
+    width: 32%;
+    max-width: 32%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+}
+._tv_tem_nam {
+    font-size: 20px;
+    line-height: 26px;
+}
+._tv_score_logo{}
+._logo_image{
+    max-width: 120px;
+    height: auto;
+}
 }
 </style>
