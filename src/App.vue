@@ -21,7 +21,7 @@
 							<li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
 								<span class="_tv_score_arrow" v-if="item.is_on_strike==1"></span>
 								<h2 class="_tv_score_plyr_nm _tv_score_plyr_actv">
-									{{item.batter.first_name | playerName}}
+									{{item.batter.first_name }}
 								</h2>
 								<p class="_tv_score_num">
 									{{item.runs_achieved}}
