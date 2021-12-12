@@ -88,7 +88,7 @@
 							<li>
 								<h2 class="_tv_score_plyr_nm">
 									<template v-if="data.bowler && data.bowler.bowler">
-                                        {{data.bowler.bowler.first_name | playerName}}
+                                        {{data.bowler.bowler.first_name }}
                                     </template>
 								</h2>
 								<p class="_tv_score_num" v-if="data.bowler">
