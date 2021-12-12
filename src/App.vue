@@ -334,14 +334,22 @@ body{
      margin: 0;
      width: 100%;
  }
- ._tv_score_plyr_nm{
-     text-transform: uppercase;
-     font-size: 22px;
-     line-height: 28px;
-     color: #000;
-     margin: 0px 0px;
-     letter-spacing: 1px;
- }
+._tv_score_plyr_nm {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000;
+    margin: 0 0;
+    letter-spacing: 1px;
+    -webkit-line-clamp: 1;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 170px;
+    overflow: hidden;
+}
  ._tv_score_num{
      margin: 0;
      font-size: 20px;
