@@ -157,7 +157,7 @@
           </template>
 				</h2> -->
                 <div class="_tv_score_logo">
-                    <img src="http://live.scorebee.com/cricket-score/dist/img/logo_scoor.svg" alt="logo" class="_logo_image">
+                    <img src="/img/scoorbee.png" alt="logo" class="_logo_image">
                 </div>
 			</div>
 		    <!-- right -->
@@ -310,6 +310,7 @@ body{
      border-bottom-left-radius: 40px;
      padding-left: 30px;
      max-width: 20%;
+     background: yellow;
  }
  ._tv_score_mdl{
      display: -webkit-box;
