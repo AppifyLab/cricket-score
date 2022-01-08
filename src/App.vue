@@ -310,7 +310,7 @@ body{
      border-bottom-left-radius: 40px;
      padding-left: 30px;
      max-width: 18%;
-     background: yellow;
+     background: #FEDA14;
  }
  ._tv_score_mdl{
      display: -webkit-box;
@@ -419,7 +419,7 @@ body{
      /* background: -o-linear-gradient(right, rgba(164,44,92,1) 0%, rgba(37,45,128,1) 100%);
      background: -o-linear-gradient(4deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%);
      background: linear-gradient(86deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%); */
-     background: yellow;
+     background: #FEDA14;
  }
  ._tv_score_pwrply{
     margin: 0;
@@ -545,7 +545,7 @@ body{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background: yellow;
+    background: #FEDA14;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
