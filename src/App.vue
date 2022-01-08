@@ -157,7 +157,7 @@
           </template>
 				</h2> -->
                 <div class="_tv_score_logo">
-                    <img src="/img/scoorbee.png" alt="logo" class="_logo_image">
+                    <img src="http://live.scorebee.com/cricket-score/dist/img/scoorbee.png" alt="logo" class="_logo_image">
                 </div>
 			</div>
 		    <!-- right -->
