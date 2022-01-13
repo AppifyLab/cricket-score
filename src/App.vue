@@ -76,7 +76,8 @@
                                     </span>
                                 </template>
                                 <template v-else>
-                                   TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}}
+                                   TAR-{{data.target}}  CRR - {{currentRunRate}}
+                                   <!-- TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}} -->
                                 </template>
 							</p>
 						</div>
