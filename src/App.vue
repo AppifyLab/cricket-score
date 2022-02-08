@@ -61,7 +61,7 @@
                                     {{data.score.total_runs}} - {{data.score.total_wicket}}
                                 </template>
 							</p>
-							<p class="_tv_score_pwrply">
+							<p class="_tv_score_pwrply" v-if="data.power_play_type">
 								{{data.power_play_type}}
 							</p>
 							<p class="_tv_score_ovr">
