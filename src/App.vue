@@ -5,11 +5,14 @@
         <div class="_tv_score">
 			<!-- left -->
 			<div class="_tv_score_lft">
-				<h2 class="_tv_tem_nam">
+				<!-- <h2 class="_tv_tem_nam">
 					<template v-if="data.batting_team">
             {{data.batting_team.team_name}}
           </template>
-				</h2>
+				</h2> -->
+                <div data-v-7ba5bd90="" class="_tv_score_logo">
+                    <img data-v-7ba5bd90="" src="http://live.scorebee.com/cricket-score/dist/img/scoorbee.png" alt="logo" class="_logo_image">
+                </div>
 			</div>
 		    <!-- left -->
 
@@ -61,8 +64,8 @@
                                     {{data.score.total_runs}} - {{data.score.total_wicket}}
                                 </template>
 							</p>
-							<p class="_tv_score_pwrply" v-if="data.power_play_type">
-								{{data.power_play_type}}
+							<p class="_tv_score_pwrply" >
+								{{data.power_play_type?data.power_play_type:''}}
 							</p>
 							<p class="_tv_score_ovr">
                                 <template v-if="data.score">
