@@ -19,7 +19,13 @@
 					<div class="_tv_score_mdl1_inr">
 						<ul class="_tv_score_mdl1_ul">
 							<li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
-								<span class="_tv_score_arrow" v-if="item.is_on_strike==1"></span>
+								<span class="_tv_score_arrow" v-if="item.is_on_strike==1">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8" cy="8" r="8" fill="#FEDA14"/>
+                                        <path d="M6.532 6.37141C6.52424 6.37493 6.51649 6.37845 6.50732 6.38573L6.50474 6.38691L6.50215 6.38808C6.4904 6.39653 6.47864 6.40499 6.46924 6.41861L6.46665 6.41978L6.46407 6.42096L6.46148 6.42213L6.46007 6.42589C6.45067 6.43951 6.44384 6.45197 6.4382 6.467L6.24198 6.98949C6.22645 7.03084 6.22854 7.07666 6.24614 7.11544L8.84219 12.8342C8.88326 12.9246 8.95701 12.9909 9.04347 13.0234C9.04723 13.0248 9.05475 13.0277 9.05851 13.0291C9.14261 13.0564 9.23426 13.0522 9.31957 13.0134L10.059 12.6778L10.7984 12.3421C10.8888 12.3011 10.9551 12.2273 10.9876 12.1408C10.989 12.1371 10.9918 12.1296 10.9933 12.1258C11.0206 12.0417 11.0164 11.9501 10.9776 11.8647L8.38277 6.14861C8.36399 6.10725 8.32829 6.07668 8.2907 6.06256L7.76445 5.86493L7.76069 5.86352L7.75693 5.86211C7.75318 5.86069 7.74683 5.86046 7.74307 5.85904C7.73297 5.85739 7.72545 5.85457 7.71652 5.85551L7.71276 5.85409L7.709 5.85268L7.70642 5.85386L7.70383 5.85503L7.70125 5.8562L7.69866 5.85738L7.69608 5.85855L7.69349 5.85973L7.69091 5.8609C7.68456 5.86066 7.67939 5.86301 7.67164 5.86653L7.66905 5.8677L7.66647 5.86888L7.66388 5.87005L7.66129 5.87122L7.65871 5.8724L7.65612 5.87357L6.53669 6.38175L6.532 6.37141Z" fill="#141414"/>
+                                        <path d="M5.85854 3.09554L5.6181 3.20468C5.52762 3.24576 5.46132 3.31951 5.42885 3.40596C5.42744 3.40972 5.42462 3.41724 5.42321 3.421C5.39591 3.50511 5.40009 3.59675 5.43882 3.68206L6.70516 6.47159C6.74271 6.55432 6.84044 6.59103 6.92317 6.55347L7.52296 6.28119C7.60569 6.24364 7.64239 6.1459 7.60484 6.06317L6.33968 3.27623C6.2986 3.18574 6.22485 3.11945 6.13839 3.08698C6.13464 3.08557 6.12712 3.08274 6.12336 3.08133C6.03667 3.05521 5.94385 3.05681 5.85854 3.09554Z" fill="#141414"/>
+                                    </svg>
+                                </span>
 								<h2 class="_tv_score_plyr_nm _tv_score_plyr_actv">
 									{{item.batter.first_name }}
 								</h2>
@@ -86,7 +92,7 @@
 				<div class="_tv_score_mdl3">
 					<div class="_tv_score_mdl3_inr">
 						<ul class="_tv_score_mdl1_ul">
-							<li>
+							<li class="_tv_score_mdl1_plyr">
 								<h2 class="_tv_score_plyr_nm">
 									<template v-if="data.bowler && data.bowler.bowler">
                                         {{data.bowler.bowler.first_name }}
@@ -281,8 +287,8 @@ body{
     position: absolute;
     bottom: -12px;
 }
-._tv_score_lft {
-    width: 20%;
+._tv_score_lft{
+    width: 10%;
     background: #fff;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -293,25 +299,31 @@ body{
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
     padding-right: 30px;
-    max-width: 20%;
+    max-width: 10%;
     padding-left: 5px;
-    min-height: 60px;
+    min-height: 90px;
     padding-bottom: 3px;
     padding-top: 3px;
+    background: #FEDA14;
 }
+._tv_score_mdl1_plyr{
+    width: 95% !important;
+}
+/* ._tv_score_mdl1_plyr{
+    padding-right: 20px;
+} */
  ._tv_tem_nam{
      margin: 0;
-     font-size: 27px;
-     line-height: 30px;
-     font-weight: 700;
+     font-size: 30px;
+     line-height: 34px;
+     font-weight: 600;
      color: #000;
-     letter-spacing: 1px;
  }
  ._tv_score_r8{
-     width: 18%;
+     width: 10%;
      background: #fff;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -322,12 +334,12 @@ body{
      -webkit-box-pack: start;
      -ms-flex-pack: start;
      justify-content: flex-start;
-     border-top-left-radius: 40px;
-     border-bottom-left-radius: 40px;
+     border-top-left-radius:100px;
+     border-bottom-left-radius:100px;
      padding-left: 30px;
-     max-width: 18%;
+     max-width: 10%;
      background: #FEDA14;
-     height: 70px;
+     height:90px;
  }
  ._tv_score_mdl{
      display: -webkit-box;
@@ -336,9 +348,11 @@ body{
      -webkit-box-align: center;
          -ms-flex-align: center;
              align-items: center;
-     width: 82%;
+     width: 80%;
      background: #fff;
      border-radius: 40px;
+     min-height: 100px;
+     padding-right: 10px;
  }
  ._logo_image{
      max-width: 120px;
@@ -377,11 +391,12 @@ body{
      font-size: 20px;
      line-height: 23px;
      font-weight: 800;
+     display: flex;
  }
  ._tv_score_ball{
     font-weight: normal;
     font-size: 13px;
-    padding-left: 3px;
+    padding-left: 7px;
     color: #424141;
 }
  ._tv_score_mdl2{
@@ -399,51 +414,48 @@ body{
              justify-content: center;
      height: 100%;
  }
- ._tv_score_cntry1{
-     margin: 0;
-     font-size: 16px;
-     text-transform: uppercase;
-     color: #1a235a;
-     line-height: 25px;
-     padding: 9px 0px 1px 0px;
-     font-weight: 600;
- }
- ._tv_score_cntry1 span{
-    padding: 0px 7px 0px 4px;
+._tv_score_cntry1 {
+    margin: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000000;
+    line-height: 20px;
+    padding: 17px 0px 1px 0px;
+    font-weight: 600;
+}
+._tv_score_cntry1 span {
+    padding: 0px 9px 0px 7px;
     font-size: 12px;
     text-transform: inherit;
 }
- ._tv_score_cntry2{
+._tv_score_cntry2 {
     margin: 0;
     font-size: 24px;
     text-transform: uppercase;
     color: #1a235a;
     line-height: 28px;
     font-weight: 600;
-    padding: 5px 0px;
+    padding: 9px 0px;
 }
- ._tv_score_cntry_scre{
-     margin: 0;
-     font-size: 24px;
-     text-transform: uppercase;
-     color: #1a235a;
-     line-height: 26px;
-     padding: 5px 12px 5px 9px;
-     border-top-right-radius: 20px;
-     border-bottom-right-radius: 20px;
-     z-index: 2;
-     font-weight: 600;
-     /* background: -o-linear-gradient(right, rgba(164,44,92,1) 0%, rgba(37,45,128,1) 100%);
-     background: -o-linear-gradient(4deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%);
-     background: linear-gradient(86deg, rgb(255 255 0) 0%, rgb(241 97 206) 100%); */
-     background: #FEDA14;
- }
+._tv_score_cntry_scre {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #1a235a;
+    line-height: 26px;
+    padding: 10px 14px 10px 9px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 2;
+    font-weight: 600;
+    background: #FEDA14;
+}
  ._tv_score_pwrply{
     margin: 0;
     padding: 5px 14px 0px 11px;
     color: #fff;
     font-size: 18px;
-    line-height: 27px;
+    line-height: 37px;
     text-transform: uppercase;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -469,7 +481,7 @@ body{
     padding: 6px 5px 0px 10px;
     color: #1a235a;
     font-size: 17px;
-    line-height: 27px;
+    line-height: 36px;
     font-weight: 700;
 }
  ._tv_score_mdl3{
@@ -495,20 +507,11 @@ body{
     align-items: center;
  }
  
- ._tv_score_arrow {
-    border-bottom: 10px solid #000;
-    border-right: 6px solid transparent;
-    border-left: 6px solid transparent;
-    -webkit-transform: rotate(
-210deg);
-    -ms-transform: rotate(210deg);
-    transform: rotate(
-210deg);
+._tv_score_arrow {
     position: absolute;
-    left: -16px;
-    top: 10px;
+    left: -24px;
+    top: 3px;
     -webkit-transition: 0.3s ease all;
-    -o-transition: 0.3s ease all;
     transition: 0.3s ease all;
 }
  /* ._tv_score_plyr_actv:after{
@@ -571,15 +574,16 @@ body{
 ._tv_score_mdl2_btm {
     background: #1A235A;
     text-align: center;
-    padding: 5px 0px;
+    padding: 10px 0px;
     text-transform: uppercase;
 }
- ._tv_score_rate{
-     margin: 0;
-     color: #fff;
-     font-size: 11px;
-     line-height: 17px;
- }
+._tv_score_rate {
+    margin: 0;
+    color: #fff;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 600;
+}
  ._scre_crcle {
     -webkit-box-pack: initial !important;
         -ms-flex-pack: initial !important;
@@ -625,11 +629,7 @@ body{
 ._scre_crcle ._active_w{
     background: #E84855;
 }
-._tv_score_crcl_spn {
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 16px;
-}
+
 ._scre_crcle_inner {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -648,11 +648,15 @@ body{
 @media (min-width: 1400px) and (max-width:1700px) { 
  ._tv_score_mdl1_inr {
     padding-right: 20px;
-    padding-left: 20px;
+    padding-left: 50px;
 }
 ._tv_score_cntry2{
     font-size: 22px;
-    max-width: 60px;
+}
+._tv_score_crcl{
+    width: 21px;
+    height: 21px;
+    font-size: 11px;
 }
 ._tv_score_cntry_scre{
     font-size: 22px;
@@ -696,11 +700,17 @@ body{
 @media (min-width: 1200px) and (max-width:1299px) { 
 ._tv_score_mdl1_inr {
     padding-right: 20px;
-    padding-left: 20px;
+    padding-left: 50px;
 }
 ._tv_score_mdl3_inr{
     padding-left: 15px;
     padding-right: 15px;
+}
+._tv_score_mdl2_btm {
+    padding: 7px 0px;
+}
+._tv_score_rate {
+    font-size: 11px;
 }
 ._tv_score_mdl2{
     width: 38%;;
@@ -727,63 +737,75 @@ body{
 }
 ._tv_score_r8{
     width: 16%;
+     height: 70px;
 }
 ._tv_score_num{
     font-size: 16px;
 }
 ._tv_score_cntry2{
     font-size: 17px;
-    line-height: 27px;
+    line-height: 20px;
+    padding:10px 0px 10px;
 }
-._tv_score_cntry_scre{
+._tv_score_cntry_scre {
     font-size: 17px;
-    line-height: 27px;
+    line-height: 20px;
+    padding: 10px 14px 6px 9px;
 }
-._tv_score_pwrply {
+._tv_score_pwrply{
     font-size: 13px;
-    padding: 5px 7px 0px 7px;
+    padding: 12px 7px 0px 7px;
+    line-height: 18px;
 }
 ._tv_score_mdl2_top {
     padding: 0px 17px;
 }
 ._tv_score_lft {
     padding-right: 20px;
+    min-height: 70px;
 }
 ._tv_score_cntry1 span {
     padding: 0px 5px 0px 2px;
 }
-._tv_score_cntry1{
-    font-size: 13px;
+._tv_score_cntry1 {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 14px 0px 0px 0px;
 }
 ._tv_score_crcl {
-    width: 25px;
-    height: 25px;
-    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
 }
 ._scre_crcle_inner{
     position: relative;
 }
-._tv_score_crcl_spn{
-    font-size: 11px;
+._tv_score_crcl_spn {
+    font-size: 9px;
     line-height: 16px;
 }
-._tv_score_ovr{
-    padding: 6px 0px 0px 8px;
-    font-size: 16px;
+._tv_score_ovr {
+    padding: 12px 0px 0px 8px;
+    font-size: 15px;
+    line-height: 19px;
 }
 }
 
 @media (min-width: 1300px) and (max-width:1399px) { 
 ._tv_score_mdl1_inr {
     padding-right: 20px;
-    padding-left: 20px;
+    padding-left: 50px;
+}
+._tv_score_lft {
+    height: 70px;
+    min-height: 70px;
 }
 ._tv_score_mdl3_inr{
     padding-left: 15px;
     padding-right: 15px;
 }
 ._tv_score_mdl2{
-    width: 38%;;
+    width: 36%;;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -796,13 +818,8 @@ body{
     font-size: 19px;
     line-height: 23px;
 }
-._tv_score_ovr {
-    margin: 0;
-    padding: 6px 0px 0px 7px;
-    color: #1a235a;
-    font-size: 17px;
-    line-height: 27px;
-    font-weight: 700;
+._tv_score_mdl2_btm {
+    padding: 8px 0px;
 }
 ._logo_image{
     max-width: 120px;
@@ -815,17 +832,20 @@ body{
 }
 ._tv_score_r8{
     width: 16%;
+    height: 70px;
 }
 ._tv_score_num{
     font-size: 16px;
 }
-._tv_score_cntry2{
+._tv_score_cntry2 {
     font-size: 18px;
-    line-height: 27px;
+    line-height: 23px;
+    padding: 10px 0px 7px;
 }
 ._tv_score_cntry_scre{
     font-size: 18px;
     line-height: 27px;
+    padding: 8px 14px 8px 9px;
 }
 ._tv_score_pwrply {
     font-size: 14px;
@@ -839,17 +859,19 @@ body{
 }
 ._tv_score_cntry1{
     font-size: 14px;
+    line-height: 18px;
+    padding: 16px 0px 1px 0px;
 }
 ._tv_score_crcl {
-    width: 25px;
-    height: 25px;
-    font-size: 11px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
 }
 ._scre_crcle_inner{
     position: relative;
 }
-._tv_score_crcl_spn{
-    font-size: 11px;
+._tv_score_crcl_spn {
+    font-size: 10px;
     line-height: 16px;
 }
 }
