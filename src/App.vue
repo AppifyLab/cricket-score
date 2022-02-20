@@ -273,7 +273,7 @@ body{
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex;
-     height: 92px;
+     height: 90px;
      position: fixed;
      /* bottom: 30px; */
      left: 0;
@@ -307,9 +307,7 @@ body{
     padding-right: 30px;
     max-width: 10%;
     padding-left: 5px;
-    min-height: 90px;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    height: 90px;
     background: #FEDA14;
 }
 ._tv_score_mdl1_plyr{
@@ -353,8 +351,8 @@ body{
              align-items: center;
      width: 80%;
      background: #fff;
-     border-radius: 40px;
-     min-height: 100px;
+     border-radius: 100px;
+     height: 90px;
      padding-right: 10px;
  }
  ._logo_image{
@@ -408,7 +406,6 @@ body{
      display: flex;
      /* padding: 0px 21px; */
      width: 32%;
-     border-radius: 40px;
      -webkit-box-align: center;
          -ms-flex-align: center;
              align-items: center;
@@ -438,7 +435,7 @@ body{
     color: #1a235a;
     line-height: 28px;
     font-weight: 600;
-    padding: 9px 0px;
+    padding: 11px 0px;
 }
 ._tv_score_cntry_scre {
     margin: 0;
@@ -446,7 +443,7 @@ body{
     text-transform: uppercase;
     color: #1a235a;
     line-height: 26px;
-    padding: 10px 14px 10px 9px;
+    padding: 12px 14px 12px 9px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     z-index: 2;
@@ -547,8 +544,9 @@ body{
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
-    border-radius: 40px;
+    border-radius: 60px;
     overflow: hidden;
+    max-height: 90px;
 }
  ._tv_score_mdl3_inr{
     padding-left: 20px;
@@ -583,8 +581,8 @@ body{
 ._tv_score_rate {
     margin: 0;
     color: #fff;
-    font-size: 12px;
-    line-height: 17px;
+    font-size: 13px;
+    line-height: 20px;
     font-weight: 600;
 }
  ._scre_crcle {
@@ -714,9 +712,16 @@ body{
 }
 ._tv_score_rate {
     font-size: 11px;
+    line-height: 16px;
 }
 ._tv_score_mdl2{
     width: 38%;;
+}
+._tv_score_mdl{
+    height: 70px;
+}
+._tv_score_mdl2_inr{
+    max-height: 70px;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -765,7 +770,7 @@ body{
 }
 ._tv_score_lft {
     padding-right: 20px;
-    min-height: 70px;
+    height: 70px;
 }
 ._tv_score_cntry1 span {
     padding: 0px 5px 0px 2px;
@@ -809,6 +814,9 @@ body{
 }
 ._tv_score_mdl2{
     width: 36%;;
+}
+._tv_score_mdl{
+    height: 76px;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -854,6 +862,9 @@ body{
     font-size: 14px;
     padding: 5px 9px 0px 6px;
 }
+._tv_score_mdl2_inr {
+    max-height: 76px;
+}
 ._tv_score_mdl2_top {
     padding: 0px 20px;
 }
@@ -863,7 +874,7 @@ body{
 ._tv_score_cntry1{
     font-size: 14px;
     line-height: 18px;
-    padding: 16px 0px 1px 0px;
+    padding: 14px 0px 1px 0px;
 }
 ._tv_score_crcl {
     width: 20px;
