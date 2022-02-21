@@ -708,7 +708,7 @@ body{
     padding-right: 15px;
 }
 ._tv_score_mdl2_btm {
-    padding: 7px 0px;
+    padding: 10px 0px;
 }
 ._tv_score_rate {
     font-size: 11px;
@@ -718,10 +718,10 @@ body{
     width: 38%;;
 }
 ._tv_score_mdl{
-    height: 70px;
+    height: 79px;
 }
 ._tv_score_mdl2_inr{
-    max-height: 70px;
+    max-height: 79px;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -745,7 +745,7 @@ body{
 }
 ._tv_score_r8{
     width: 16%;
-     height: 70px;
+     height: 79px;
 }
 ._tv_score_num{
     font-size: 16px;
@@ -753,7 +753,7 @@ body{
 ._tv_score_cntry2{
     font-size: 17px;
     line-height: 20px;
-    padding:10px 0px 10px;
+    padding:12px 0px 12px;
 }
 ._tv_score_cntry_scre {
     font-size: 17px;
@@ -770,7 +770,7 @@ body{
 }
 ._tv_score_lft {
     padding-right: 20px;
-    height: 70px;
+    height: 79px;
 }
 ._tv_score_cntry1 span {
     padding: 0px 5px 0px 2px;
@@ -805,8 +805,7 @@ body{
     padding-left: 50px;
 }
 ._tv_score_lft {
-    height: 70px;
-    min-height: 70px;
+    height: 79px;
 }
 ._tv_score_mdl3_inr{
     padding-left: 15px;
@@ -816,7 +815,7 @@ body{
     width: 36%;;
 }
 ._tv_score_mdl{
-    height: 70px;
+    height: 79px;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -830,7 +829,7 @@ body{
     line-height: 23px;
 }
 ._tv_score_mdl2_btm {
-    padding: 4px 0px;
+    padding: 7px 0px;
 }
 ._logo_image{
     max-width: 120px;
@@ -843,7 +842,7 @@ body{
 }
 ._tv_score_r8{
     width: 16%;
-    height: 70px;
+    height: 79px;
 }
 ._tv_score_num{
     font-size: 16px;
@@ -856,14 +855,14 @@ body{
 ._tv_score_cntry_scre{
     font-size: 18px;
     line-height: 27px;
-    padding: 8px 14px 8px 9px;
+    padding: 9px 14px 9px 9px;
 }
 ._tv_score_pwrply {
     font-size: 14px;
     padding: 5px 9px 0px 6px;
 }
 ._tv_score_mdl2_inr {
-    max-height: 70px;
+    max-height: 79px;
     overflow: hidden;
 }
 ._tv_score_mdl2_top {
