@@ -413,6 +413,7 @@ body{
          -ms-flex-pack: center;
              justify-content: center;
      height: 100%;
+     overflow: hidden;
  }
 ._tv_score_cntry1 {
     margin: 0;
