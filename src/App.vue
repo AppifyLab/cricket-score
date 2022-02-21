@@ -816,7 +816,7 @@ body{
     width: 36%;;
 }
 ._tv_score_mdl{
-    height: 76px;
+    height: 70px;
 }
 ._tv_score_mdl1, ._tv_score_mdl3{
     width: 31%;
@@ -830,7 +830,7 @@ body{
     line-height: 23px;
 }
 ._tv_score_mdl2_btm {
-    padding: 8px 0px;
+    padding: 4px 0px;
 }
 ._logo_image{
     max-width: 120px;
@@ -863,7 +863,8 @@ body{
     padding: 5px 9px 0px 6px;
 }
 ._tv_score_mdl2_inr {
-    max-height: 76px;
+    max-height: 70px;
+    overflow: hidden;
 }
 ._tv_score_mdl2_top {
     padding: 0px 20px;
