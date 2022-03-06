@@ -294,13 +294,12 @@ export default {
         if(this.data.score){
             let a = parseFloat(this.data.score.total_over)
            let integr = Math.floor(this.data.score.total_over)
-           let decimal2 = this.data.score.total_over - Math.floor(this.data.score.total_over)
+           let decimal2 = a - Math.floor(a)
            let decimal = this.data.score.total_over - Math.floor(this.data.score.total_over)
            decimal= (decimal*10)/6
 
             let totalBall=integr + decimal 
-            this.leftBalls = (parseFloat(this.data.match_overs)*6)-((parseFloat(integr)*6)+(parseFloat(decimal2)*10))
-
+            this.leftBalls = (parseInt(this.data.match_overs)*6)-((Math.floor(a)*6)+(decimal2*10))
             if(totalBall==0){
                 this.currentRunRate=0.00
                 this.requireRunRate=0.00
