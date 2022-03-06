@@ -299,7 +299,11 @@ export default {
            decimal= (decimal*10)/6
 
             let totalBall=integr + decimal 
-            this.leftBalls = (parseInt(this.data.match_overs)*6)-((Math.floor(a)*6)+(decimal2*10))
+            this.leftBalls = Math.ceil((parseInt(this.data.match_overs)*6) - ((Math.floor(a)*6)+(decimal2*10)))
+            // ((Math.floor(a)*6)+(decimal2*10))
+            // (parseInt(this.data.match_overs)*6) -
+            //  (Math.floor(a)*6)
+            // (parseInt(this.data.match_overs)*6)-((Math.floor(a)*6)+(decimal2*10))
             if(totalBall==0){
                 this.currentRunRate=0.00
                 this.requireRunRate=0.00
