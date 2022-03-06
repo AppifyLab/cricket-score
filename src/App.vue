@@ -18,143 +18,229 @@
 
 			<!-- mdl -->
 			<div class="_tv_score_mdl">
-				<div class="_tv_score_mdl1">
-					<div class="_tv_score_mdl1_inr">
-						<ul class="_tv_score_mdl1_ul">
-							<li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
-								<span class="_tv_score_arrow" v-if="item.is_on_strike==1">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="8" cy="8" r="8" fill="#FEDA14"/>
-                                        <path d="M6.532 6.37141C6.52424 6.37493 6.51649 6.37845 6.50732 6.38573L6.50474 6.38691L6.50215 6.38808C6.4904 6.39653 6.47864 6.40499 6.46924 6.41861L6.46665 6.41978L6.46407 6.42096L6.46148 6.42213L6.46007 6.42589C6.45067 6.43951 6.44384 6.45197 6.4382 6.467L6.24198 6.98949C6.22645 7.03084 6.22854 7.07666 6.24614 7.11544L8.84219 12.8342C8.88326 12.9246 8.95701 12.9909 9.04347 13.0234C9.04723 13.0248 9.05475 13.0277 9.05851 13.0291C9.14261 13.0564 9.23426 13.0522 9.31957 13.0134L10.059 12.6778L10.7984 12.3421C10.8888 12.3011 10.9551 12.2273 10.9876 12.1408C10.989 12.1371 10.9918 12.1296 10.9933 12.1258C11.0206 12.0417 11.0164 11.9501 10.9776 11.8647L8.38277 6.14861C8.36399 6.10725 8.32829 6.07668 8.2907 6.06256L7.76445 5.86493L7.76069 5.86352L7.75693 5.86211C7.75318 5.86069 7.74683 5.86046 7.74307 5.85904C7.73297 5.85739 7.72545 5.85457 7.71652 5.85551L7.71276 5.85409L7.709 5.85268L7.70642 5.85386L7.70383 5.85503L7.70125 5.8562L7.69866 5.85738L7.69608 5.85855L7.69349 5.85973L7.69091 5.8609C7.68456 5.86066 7.67939 5.86301 7.67164 5.86653L7.66905 5.8677L7.66647 5.86888L7.66388 5.87005L7.66129 5.87122L7.65871 5.8724L7.65612 5.87357L6.53669 6.38175L6.532 6.37141Z" fill="#141414"/>
-                                        <path d="M5.85854 3.09554L5.6181 3.20468C5.52762 3.24576 5.46132 3.31951 5.42885 3.40596C5.42744 3.40972 5.42462 3.41724 5.42321 3.421C5.39591 3.50511 5.40009 3.59675 5.43882 3.68206L6.70516 6.47159C6.74271 6.55432 6.84044 6.59103 6.92317 6.55347L7.52296 6.28119C7.60569 6.24364 7.64239 6.1459 7.60484 6.06317L6.33968 3.27623C6.2986 3.18574 6.22485 3.11945 6.13839 3.08698C6.13464 3.08557 6.12712 3.08274 6.12336 3.08133C6.03667 3.05521 5.94385 3.05681 5.85854 3.09554Z" fill="#141414"/>
-                                    </svg>
-                                </span>
-								<h2 class="_tv_score_plyr_nm _tv_score_plyr_actv">
-									{{item.batter.first_name }}
-								</h2>
-								<p class="_tv_score_num">
-									{{item.runs_achieved}}
-									<span class="_tv_score_ball">
-								  	{{item.balls_faced}}
-									</span>
-								</p>
-							</li>
-
-						</ul>
-					</div>
-				</div>
-				<div class="_tv_score_mdl2">
-					<div class="_tv_score_mdl2_inr">
-						<div class="_tv_score_mdl2_top">
-							<p class="_tv_score_cntry1">
-                                <template v-if="data.bowling_team">
-                                {{data.bowling_team.team_short_name}}
-                                </template>
-								
-								<span>v</span>
-							</p>
-							<p class="_tv_score_cntry2">
-                                <template v-if="data.batting_team">
-                                    {{data.batting_team.team_short_name}}
-                                </template>
-								
-							</p>
-							<p class="_tv_score_cntry_scre">
-                                <template v-if="data.score">
-                                    {{data.score.total_runs}} - {{data.score.total_wicket}}
-                                </template>
-							</p>
-							<p class="_tv_score_pwrply" >
-								{{data.power_play_type?data.power_play_type:''}}
-							</p>
-							<p class="_tv_score_ovr">
-                                <template v-if="data.score">
-                                    {{data.score.total_over}}
-                                </template>
-							</p>
-						</div>
-
-						<div class="_tv_score_mdl2_btm">
-							<p class="_tv_score_rate" v-if="data">
-                                <template v-if="data.is_first_innings==1">
-                                    <span v-if="data.score && data.score.total_over<5">
-                                        {{data.toss}}
+                <div class="_tv_score_mdl_main1" style="display:none;">
+                    <div class="_tv_score_mdl1">
+                        <div class="_tv_score_mdl1_inr">
+                            <ul class="_tv_score_mdl1_ul">
+                                <li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
+                                    <span class="_tv_score_arrow" v-if="item.is_on_strike==1">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8" cy="8" r="8" fill="#FEDA14"/>
+                                            <path d="M6.532 6.37141C6.52424 6.37493 6.51649 6.37845 6.50732 6.38573L6.50474 6.38691L6.50215 6.38808C6.4904 6.39653 6.47864 6.40499 6.46924 6.41861L6.46665 6.41978L6.46407 6.42096L6.46148 6.42213L6.46007 6.42589C6.45067 6.43951 6.44384 6.45197 6.4382 6.467L6.24198 6.98949C6.22645 7.03084 6.22854 7.07666 6.24614 7.11544L8.84219 12.8342C8.88326 12.9246 8.95701 12.9909 9.04347 13.0234C9.04723 13.0248 9.05475 13.0277 9.05851 13.0291C9.14261 13.0564 9.23426 13.0522 9.31957 13.0134L10.059 12.6778L10.7984 12.3421C10.8888 12.3011 10.9551 12.2273 10.9876 12.1408C10.989 12.1371 10.9918 12.1296 10.9933 12.1258C11.0206 12.0417 11.0164 11.9501 10.9776 11.8647L8.38277 6.14861C8.36399 6.10725 8.32829 6.07668 8.2907 6.06256L7.76445 5.86493L7.76069 5.86352L7.75693 5.86211C7.75318 5.86069 7.74683 5.86046 7.74307 5.85904C7.73297 5.85739 7.72545 5.85457 7.71652 5.85551L7.71276 5.85409L7.709 5.85268L7.70642 5.85386L7.70383 5.85503L7.70125 5.8562L7.69866 5.85738L7.69608 5.85855L7.69349 5.85973L7.69091 5.8609C7.68456 5.86066 7.67939 5.86301 7.67164 5.86653L7.66905 5.8677L7.66647 5.86888L7.66388 5.87005L7.66129 5.87122L7.65871 5.8724L7.65612 5.87357L6.53669 6.38175L6.532 6.37141Z" fill="#141414"/>
+                                            <path d="M5.85854 3.09554L5.6181 3.20468C5.52762 3.24576 5.46132 3.31951 5.42885 3.40596C5.42744 3.40972 5.42462 3.41724 5.42321 3.421C5.39591 3.50511 5.40009 3.59675 5.43882 3.68206L6.70516 6.47159C6.74271 6.55432 6.84044 6.59103 6.92317 6.55347L7.52296 6.28119C7.60569 6.24364 7.64239 6.1459 7.60484 6.06317L6.33968 3.27623C6.2986 3.18574 6.22485 3.11945 6.13839 3.08698C6.13464 3.08557 6.12712 3.08274 6.12336 3.08133C6.03667 3.05521 5.94385 3.05681 5.85854 3.09554Z" fill="#141414"/>
+                                        </svg>
                                     </span>
-                                    <span v-else>
-                                         RR - {{currentRunRate}}
-                                    </span>
-                                </template>
-                                <template v-else>
-                                   TAR-{{data.target}}  CRR - {{currentRunRate}}
-                                   <!-- TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}} -->
-                                </template>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="_tv_score_mdl3">
-					<div class="_tv_score_mdl3_inr">
-						<ul class="_tv_score_mdl1_ul">
-							<li class="_tv_score_mdl1_plyr">
-								<h2 class="_tv_score_plyr_nm">
-									<template v-if="data.bowler && data.bowler.bowler">
-                                        {{data.bowler.bowler.first_name }}
+                                    <h2 class="_tv_score_plyr_nm _tv_score_plyr_actv">
+                                        {{item.batter.first_name }}
+                                    </h2>
+                                    <p class="_tv_score_num">
+                                        {{item.runs_achieved}}
+                                        <span class="_tv_score_ball">
+                                        {{item.balls_faced}}
+                                        </span>
+                                    </p>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="_tv_score_mdl2">
+                        <div class="_tv_score_mdl2_inr">
+                            <div class="_tv_score_mdl2_top">
+                                <p class="_tv_score_cntry1">
+                                    <template v-if="data.bowling_team">
+                                    {{data.bowling_team.team_short_name}}
                                     </template>
-								</h2>
-								<p class="_tv_score_num" v-if="data.bowler">
-									{{data.bowler.wickets}}-{{data.bowler.runs_gave}}
-									<span class="_tv_score_ball">
-										{{data.bowler.overs_bowled}}
-									</span>
-								</p>
-							</li>
-							<li class="_scre_crcle" v-if="data.bowler && data.bowler.over_details">
-                                <div v-for="(item,index) in data.bowler.over_details" :key="index" class="_scre_crcle_inner">
                                     
-                                     <p class="_tv_score_crcl _active_w" v-if="item.is_wicket">
-                                        {{item.circle_value}}
-                                    </p>
+                                    <span>v</span>
+                                </p>
+                                <p class="_tv_score_cntry2">
+                                    <template v-if="data.batting_team">
+                                        {{data.batting_team.team_short_name}}
+                                    </template>
+                                    
+                                </p>
+                                <p class="_tv_score_cntry_scre">
+                                    <template v-if="data.score">
+                                        {{data.score.total_runs}} - {{data.score.total_wicket}}
+                                    </template>
+                                </p>
+                                <p class="_tv_score_pwrply" >
+                                    {{data.power_play_type?data.power_play_type:''}}
+                                </p>
+                                <p class="_tv_score_ovr">
+                                    <template v-if="data.score">
+                                        {{data.score.total_over}}
+                                    </template>
+                                </p>
+                            </div>
 
-                                    <p class="_tv_score_crcl _active6" 
-                                    v-else-if="item.boundary_type && item.boundary_type=='SIX'">
-                                        {{item.circle_value}}
-                                    </p>
-                                     <p class="_tv_score_crcl _active4"  v-else-if="item.boundary_type && item.boundary_type=='FOUR'">
-                                        {{item.circle_value}}
-                                    </p>
-                                      <p class="_tv_score_crcl"  v-else>
-                                        {{item.circle_value}}
-                                    </p>
-                                    
-                                    
-                                    <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
-                                </div>
+                            <div class="_tv_score_mdl2_btm">
+                                <p class="_tv_score_rate" v-if="data">
+                                    <template v-if="data.is_first_innings==1">
+                                        <span v-if="data.score && data.score.total_over<5">
+                                            {{data.toss}}
+                                        </span>
+                                        <span v-else>
+                                            RR - {{currentRunRate}}
+                                        </span>
+                                    </template>
+                                    <template v-else>
+                                    TAR-{{data.target}}  CRR - {{currentRunRate}}
+                                    <!-- TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}} -->
+                                    </template>
+                                </p>
+                            </div>
+                        </div>
 
-                                <!-- <p class="_tv_score_crcl" :class="item.circle_value==0 ? '': item.circle_value==4 ? '_active4'
-                                        : item.circle_value==6? '_active6'
-                                        : item.is_wicket==1?'_active_w'
-                                        : item.circle_value=='n6'? '_active6'
-                                        :''
-                                        " >
-                                    
-                                        {{item.circle_value}}
+                    </div>
+                    <div class="_tv_score_mdl3">
+                        <div class="_tv_score_mdl3_inr">
+                            <ul class="_tv_score_mdl1_ul">
+                                <li class="_tv_score_mdl1_plyr">
+                                    <h2 class="_tv_score_plyr_nm">
+                                        <template v-if="data.bowler && data.bowler.bowler">
+                                            {{data.bowler.bowler.first_name }}
+                                        </template>
+                                    </h2>
+                                    <p class="_tv_score_num" v-if="data.bowler">
+                                        {{data.bowler.wickets}}-{{data.bowler.runs_gave}}
+                                        <span class="_tv_score_ball">
+                                            {{data.bowler.overs_bowled}}
+                                        </span>
+                                    </p>
+                                </li>
+                                <li class="_scre_crcle" v-if="data.bowler && data.bowler.over_details">
+                                    <div v-for="(item,index) in data.bowler.over_details" :key="index" class="_scre_crcle_inner">
+                                        
+                                        <p class="_tv_score_crcl _active_w" v-if="item.is_wicket">
+                                            {{item.circle_value}}
+                                        </p>
+
+                                        <p class="_tv_score_crcl _active6" 
+                                        v-else-if="item.boundary_type && item.boundary_type=='SIX'">
+                                            {{item.circle_value}}
+                                        </p>
+                                        <p class="_tv_score_crcl _active4"  v-else-if="item.boundary_type && item.boundary_type=='FOUR'">
+                                            {{item.circle_value}}
+                                        </p>
+                                        <p class="_tv_score_crcl"  v-else>
+                                            {{item.circle_value}}
+                                        </p>
+                                        
+                                        
+                                        <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
+                                    </div>
+
+                                    <!-- <p class="_tv_score_crcl" :class="item.circle_value==0 ? '': item.circle_value==4 ? '_active4'
+                                            : item.circle_value==6? '_active6'
+                                            : item.is_wicket==1?'_active_w'
+                                            : item.circle_value=='n6'? '_active6'
+                                            :''
+                                            " >
+                                        
+                                            {{item.circle_value}}
+                                        </p> -->
+                                    <!-- <p class="_tv_score_crcl _active4">
+                                        4
+                                    </p>
+                                    <p class="_tv_score_crcl _active6">
+                                        6
+                                    </p>
+                                    <p class="_tv_score_crcl _active_w">
+                                        w
+                                    </p>
+                                    <p class="_tv_score_crcl _active6">
+                                        n6
                                     </p> -->
-								<!-- <p class="_tv_score_crcl _active4">
-									4
-								</p>
-								<p class="_tv_score_crcl _active6">
-									6
-								</p>
-								<p class="_tv_score_crcl _active_w">
-									w
-								</p>
-								<p class="_tv_score_crcl _active6">
-									n6
-								</p> -->
-							</li>
-						</ul>
-					</div>
-				</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="_tv_score_mdl_main2">
+                    <div class="_tv_score_mdl_main2_lft">
+                         <div class="_tv_score_mdl2_inr">
+                            <div class="_tv_score_mdl2_top">
+                                <p class="_tv_score_cntry1">
+                                    <template v-if="data.bowling_team">
+                                    {{data.bowling_team.team_short_name}}
+                                    </template>
+                                    
+                                    <span>v</span>
+                                </p>
+                                <p class="_tv_score_cntry2">
+                                    <template v-if="data.batting_team">
+                                        {{data.batting_team.team_short_name}}
+                                    </template>
+                                    
+                                </p>
+                                <p class="_tv_score_cntry_scre">
+                                    <template v-if="data.score">
+                                        {{data.score.total_runs}} - {{data.score.total_wicket}}
+                                    </template>
+                                </p>
+                                <p class="_tv_score_pwrply" >
+                                    {{data.power_play_type?data.power_play_type:''}}
+                                </p>
+                                <p class="_tv_score_ovr">
+                                    <template v-if="data.score">
+                                        {{data.score.total_over}}
+                                    </template>
+                                </p>
+                            </div>
+
+                            <div class="_tv_score_mdl2_btm">
+                                <p class="_tv_score_rate" v-if="data">
+                                    <template v-if="data.is_first_innings==1">
+                                        <span v-if="data.score && data.score.total_over<5">
+                                            {{data.toss}}
+                                        </span>
+                                        <span v-else>
+                                            RR - {{currentRunRate}}
+                                        </span>
+                                    </template>
+                                    <template v-else>
+                                    TAR-{{data.target}}  CRR - {{currentRunRate}}
+                                    <!-- TAR-{{data.target}} REQ - {{requireRunRate}} CRR - {{currentRunRate}} -->
+                                    </template>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_tv_score_mdl_main2_r8">
+                        <div class="_tv_score_mdl_main2_nd">
+                            <p class="_tv_score_mdl_main2_nd_txt">
+                                Paschim Borshijura United Club <br> need
+                            </p>
+                        </div>
+                        <div class="_tv_score_mdl_main2_run">
+                            <ul class="_tv_score_mdl_main2_run_ul d-flex">
+                                <li>
+                                    <span class="_tv_score_mdl_main2_run_txt">
+                                        120
+                                    </span>
+                                </li>
+                                 <li>
+                                    <span class="_tv_score_mdl_main2_run_txt2">
+                                        more <br> from
+                                    </span>
+                                </li>
+                                 <li>
+                                    <span class="_tv_score_mdl_main2_run_txt">
+                                        120
+                                    </span>
+                                </li>
+                                 <li>
+                                    <span class="_tv_score_mdl_main2_run_txt2">
+                                        balls
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		    <!-- mdl -->
 
@@ -191,10 +277,11 @@ export default {
 
   methods: {
      async getData(){
-        //  getStreamMatchLiveScore_kamran
+        //  getStreamMatchLiveScore_kamran getInningsLiveScore
        const res = await this.callApi(
         "get",
         `match/getStreamMatchLiveScore_kamran/${this.$route.query.matchId}`
+        // `match/getInningsLiveScore/${this.$route.query.matchId}`
       )
       if (res.status == 200) {
         // console.log('hjgjhgj')
@@ -290,6 +377,13 @@ body{
     position: absolute;
     bottom: -12px;
 }
+._tv_score_mdl_main2_lft{
+    width: 33.33%;
+     flex: 0 0 auto;
+}
+._tv_score_mdl_main2_lft ._tv_score_mdl2_inr{
+    width: 100%;
+}
 ._tv_score_lft{
     width: 10%;
     background: #fff;
@@ -323,6 +417,118 @@ body{
      font-weight: 600;
      color: #000;
  }
+ ._tv_score_mdl_main1{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+ }
+ ._tv_score_mdl_main2_r8{
+     display: flex;
+     align-items: center;
+    height: 100%;
+     flex:1 1;
+     justify-content: space-between;
+ }
+._tv_score_mdl_main2_run_ul {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: space-around;
+}
+._tv_score_mdl_main2_run_ul li{
+    padding: 0px 12px;
+    position: relative;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width:100%;
+}
+._tv_score_mdl_main2_run_ul li:after {
+    position: absolute;
+    content: '';
+    background: #c7c7c7;
+    width: 3px;
+    height: 100%;
+    left: -3px;
+    top: 0;
+}
+
+._tv_score_mdl_main2_run_txt {
+    font-size: 50px;
+    line-height: 55px;
+    font-weight: bold;
+    color: #1a235a;
+}
+._tv_score_mdl_main2_run_txt2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 25px;
+    color: #323131;
+    line-height: 34px;
+}
+ ._tv_score_mdl_main2{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    max-height: 90px;
+    overflow: hidden;
+ }
+._tv_score_mdl_main2_run {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    padding-right: 0px;
+    padding-left: 20px;
+}
+._tv_score_mdl_main2_nd {
+    width: max-content;
+    overflow: hidden;
+    max-height: 90px;
+    height: 100%;
+    flex:1 1;
+    border-radius: 60px;
+    text-align: center;
+    min-width: 220px;
+    font-weight: 500;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+     padding: 12px 16px;
+    background: #1a235a;
+    height: 90px;
+}
+._tv_score_mdl_main2_nd_txt {
+    color: #fff;
+    font-size: 22px;
+    line-height: 33px;
+    text-transform: uppercase;
+    margin: 0px 10px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
  ._tv_score_r8{
      width: 10%;
      background: #fff;
@@ -576,7 +782,7 @@ body{
 ._tv_score_mdl2_btm {
     background: #1A235A;
     text-align: center;
-    padding: 10px 0px;
+    padding: 10px 16px;
     text-transform: uppercase;
 }
 ._tv_score_rate {
@@ -697,6 +903,23 @@ body{
     font-size: 11px;
     line-height: 16px;
 }
+._tv_score_mdl_main2_nd_txt {
+    font-size: 19px;
+    line-height: 27px;
+    max-width: 350px;
+}
+._tv_score_mdl_main2_run_txt {
+    font-size: 38px;
+    line-height: 55px;
+}
+._tv_score_mdl_main2_run_txt2 {
+    font-size: 22px;
+    line-height: 30px;
+}
+._tv_score_mdl_main2_run_ul lI {
+    padding: 0px 5px;
+    height: 70px;
+}
 }
 
 @media (min-width: 1200px) and (max-width:1299px) { 
@@ -798,6 +1021,29 @@ body{
     font-size: 15px;
     line-height: 19px;
 }
+._tv_score_mdl_main2_nd_txt{
+  font-size: 16px;
+    line-height: 29px;
+    max-width: 260px;
+}
+._tv_score_mdl_main2_run_ul li {
+    padding: 0px 7px;
+    height: 65px;
+}
+._tv_score_mdl_main2_run_txt {
+    font-size: 30px;
+    line-height: 55px;
+}
+._tv_score_mdl_main2_run_txt2 {
+    font-size: 18px;
+    line-height: 25px;
+}
+._tv_score_mdl_main2 {
+    max-height:79px;
+}
+._tv_score_mdl_main2_nd{
+     max-height:79px;
+}
 }
 
 @media (min-width: 1300px) and (max-width:1399px) { 
@@ -813,7 +1059,7 @@ body{
     padding-right: 15px;
 }
 ._tv_score_mdl2{
-    width: 36%;;
+    width: 36%;
 }
 ._tv_score_mdl{
     height: 79px;
@@ -830,7 +1076,7 @@ body{
     line-height: 23px;
 }
 ._tv_score_mdl2_btm {
-    padding: 7px 0px;
+    padding: 7px 15px;
 }
 ._logo_image{
     max-width: 120px;
@@ -888,6 +1134,29 @@ body{
 ._tv_score_crcl_spn {
     font-size: 10px;
     line-height: 16px;
+}
+._tv_score_mdl_main2_nd_txt{
+   font-size: 18px;
+    line-height: 29px;
+    max-width: 273px;
+}
+._tv_score_mdl_main2_run_ul li {
+    padding: 0px 7px;
+    height: 70px;
+}
+._tv_score_mdl_main2_run_txt {
+    font-size: 35px;
+    line-height: 55px;
+}
+._tv_score_mdl_main2_run_txt2 {
+    font-size: 20px;
+    line-height: 29px;
+}
+._tv_score_mdl_main2 {
+    max-height:79px;
+}
+._tv_score_mdl_main2_nd{
+     max-height:79px;
 }
 }
 </style>
