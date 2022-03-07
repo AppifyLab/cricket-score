@@ -18,7 +18,7 @@
 
 			<!-- mdl -->
 			<div class="_tv_score_mdl">
-                <div class="_tv_score_mdl_main1" style="display:none;">
+                <div class="_tv_score_mdl_main1" v-if="!open_terget">
                     <div class="_tv_score_mdl1">
                         <div class="_tv_score_mdl1_inr">
                             <ul class="_tv_score_mdl1_ul">
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 
-                <div class="_tv_score_mdl_main2">
+                <div class="_tv_score_mdl_main2" v-else>
                     <div class="_tv_score_mdl_main2_lft">
                          <div class="_tv_score_mdl2_inr">
                             <div class="_tv_score_mdl2_top">
@@ -212,14 +212,14 @@
                     <div class="_tv_score_mdl_main2_r8">
                         <div class="_tv_score_mdl_main2_nd">
                             <p class="_tv_score_mdl_main2_nd_txt">
-                                Paschim Borshijura United Club <br> need
+                                {{data.batting_team.team_name}} <br> need
                             </p>
                         </div>
                         <div class="_tv_score_mdl_main2_run">
                             <ul class="_tv_score_mdl_main2_run_ul d-flex">
                                 <li>
                                     <span class="_tv_score_mdl_main2_run_txt">
-                                        120
+                                        {{(data.target-data.score.total_runs)>=0?(data.target-data.score.total_runs):'Win'}}
                                     </span>
                                 </li>
                                  <li>
@@ -229,7 +229,7 @@
                                 </li>
                                  <li>
                                     <span class="_tv_score_mdl_main2_run_txt">
-                                        120
+                                        {{leftBalls}}
                                     </span>
                                 </li>
                                  <li>
@@ -272,6 +272,8 @@ export default {
      over:[],
      currentRunRate:0,
      requireRunRate:0,
+     leftBalls:0,
+     open_terget:false
     };
   },
 
@@ -290,12 +292,18 @@ export default {
           this.over=this.data.bowler.over_details
         }
         if(this.data.score){
+            let a = parseFloat(this.data.score.total_over)
            let integr = Math.floor(this.data.score.total_over)
+           let decimal2 = a - Math.floor(a)
            let decimal = this.data.score.total_over - Math.floor(this.data.score.total_over)
            decimal= (decimal*10)/6
 
             let totalBall=integr + decimal 
-
+            this.leftBalls = Math.ceil((parseInt(this.data.match_overs)*6) - ((Math.floor(a)*6)+(decimal2*10)))
+            // ((Math.floor(a)*6)+(decimal2*10))
+            // (parseInt(this.data.match_overs)*6) -
+            //  (Math.floor(a)*6)
+            // (parseInt(this.data.match_overs)*6)-((Math.floor(a)*6)+(decimal2*10))
             if(totalBall==0){
                 this.currentRunRate=0.00
                 this.requireRunRate=0.00
@@ -335,6 +343,13 @@ export default {
     // 379
     if(this.$route.query && this.$route.query.matchId){
         this.getData()
+        
+    }
+    if(this.$route.query && this.$route.query.open_terget){
+        if(this.data  && !this.data.is_first_innings){
+            this.open_terget = true
+        }
+        
         
     }
   },
