@@ -491,7 +491,40 @@ body{
     width: 100%;
     max-height: 90px;
     overflow: hidden;
+      -webkit-animation: mymove 0.5s;
+    animation: mymove 0.5s;
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
+    z-index: 0;
  }
+@-webkit-keyframes mymove{
+	from{
+		-webkit-transform: translateX(200%);
+		        transform: translateX(200%);
+	}
+	to{
+		transform: translateX(0%);
+		-webkit-transform: translateX(0%);
+		-moz-transform: translateX(0%);
+		-ms-transform: translateX(0%);
+		-o-transform: translateX(0%);
+}
+}
+@keyframes mymove{
+	from{
+		-webkit-transform: translateX(200%);
+		        transform: translateX(200%);
+	}
+	to{
+		transform: translateX(0%);
+		-webkit-transform: translateX(0%);
+		-moz-transform: translateX(0%);
+		-ms-transform: translateX(0%);
+		-o-transform: translateX(0%);
+}
+}
 ._tv_score_mdl_main2_run {
     -webkit-box-flex: 1;
     -ms-flex: 1 1;
@@ -517,6 +550,7 @@ body{
      padding: 12px 16px;
     background: #1a235a;
     height: 90px;
+    margin: 0px 10px;
 }
 ._tv_score_mdl_main2_nd_txt {
     color: #fff;
@@ -547,6 +581,7 @@ body{
      max-width: 10%;
      background: #FEDA14;
      height:90px;
+      z-index: 2;
  }
  ._tv_score_mdl{
      display: -webkit-box;
@@ -1024,7 +1059,7 @@ body{
 ._tv_score_mdl_main2_nd_txt{
   font-size: 16px;
     line-height: 29px;
-    max-width: 260px;
+    max-width: 250px;
 }
 ._tv_score_mdl_main2_run_ul li {
     padding: 0px 7px;
@@ -1159,4 +1194,5 @@ body{
      max-height:79px;
 }
 }
+
 </style>
