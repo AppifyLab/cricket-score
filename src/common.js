@@ -5,7 +5,8 @@ export default {
             // siteUri: 'http://staginapi.duare.net/api/',
             // siteUri: 'http://scorebee-api.test/api/',
             siteUri: 'http://mobileapi.scorebee.com/api/',
-            //siteUri: 'http://padelmobile.localhost/api/tv/',
+            // siteUri: 'http://127.0.0.1:8000/api/',
+            // siteUri: 'http://padelmobile.localhost/api/tv/',
             // imageUrl : 'https://backoffice.forehand.se'
 			// http://staginapi.duare.net/api/match/getInningsLiveScore/7000
 		}
