@@ -1172,12 +1172,12 @@
       <div class="_batsmanScore_top">
         <div class="_batsmanScore_top_left">
           <div class="_batsmanScore_top_team">
-            <p class="_batsmanScore_top_team_one">South africa</p>
+            <p class="_batsmanScore_top_team_one"> {{ this.data.batting_team.team_name.slice(0,30)}}</p>
             <p class="_batsmanScore_top_team_v">V</p>
-            <p class="_batsmanScore_top_team_two">Bangladesh</p>
+            <p class="_batsmanScore_top_team_two"> {{this.data.bowling_team.team_name.slice(0,30)}} </p>
           </div>
 
-          <p class="_batsmanScore_match">T20 INTERNAtiional</p>
+          <p class="_batsmanScore_match">{{this.data.batting_summary[0].match_type}}</p>
         </div>
 
         <div class="_batsmanScore_top_logo">
@@ -2329,14 +2329,19 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 /* team bowling card  */
 .team_bowling_score_card_super{
   vertical-align: bottom !important;
-  position: absolute;
+  /* position: absolute; */
   padding: 0;
   margin: 0;
-  bottom: 5px;
-  width: 99vw;
+  /* top: auto;
+  bottom: 0; */
+  min-height: 98vh;
+  display: flex;
+  /* justify-content: flex-end; */
+  align-items: flex-end;
+  width: 98vw;
 }
  ._bolwerScore_con {
-      margin-top: 50px;
+      /* margin-top: 50px; */
       margin: 0 auto;
       /* margin-bottom: 50px; */
   }
@@ -2390,7 +2395,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
-      line-height: 30px;
+      line-height: 25px;
       text-transform: uppercase;
       color: #FFFFFF;
       margin: 0 0 0px 4px;
@@ -2727,7 +2732,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
-      line-height: 30px;
+      line-height: 25px;
       text-transform: uppercase;
       color: #FFFFFF;
       margin: 0 0 0px 4px;
