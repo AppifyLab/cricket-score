@@ -20,11 +20,9 @@
           <div class="score">
             <p class="bowling_team">
               <template v-if="data.bowling_team">
-                    <!-- {{myname.slice(0,5)}} -->
                     {{data.bowling_team.team_short_name.slice(0,5)}}
                 </template> v <span class="batting_team">
                     <template v-if="data.batting_team">
-                        <!-- {{myname.slice(0,5)}} -->
                         {{data.batting_team.team_short_name.slice(0,5)}}
                     </template>
                 </span>
@@ -189,7 +187,6 @@
           <div class="bowler_run_wicket">
             <p>
                 <template v-if="data.bowler && data.bowler.bowler">
-                  <!-- {{myname.slice(0,8)}} -->
                     {{data.bowler.bowler.first_name.slice(0,8) }}
                 </template></p>
             <p class="bowler_run_wicket_p_second"  v-if="data.bowler">
@@ -201,7 +198,7 @@
 
           <div class="over_every_ball">
             <!-- 6 6 2 3 1 6 6 -->
-                <!-- <ul>
+                <ul>
                   <li class="_scre_crcle" v-if="data.bowler && data.bowler.over_details">
                     <div v-for="(item,index) in data.bowler.over_details" :key="index" class="_scre_crcle_inner">
 
@@ -223,7 +220,7 @@
                         <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
                     </div>
                  </li>
-                </ul> -->
+                </ul>
           </div>
 
         </div>
@@ -275,7 +272,10 @@
                     </div>
     </template>
           <!-- player_bowling_status -->
-    <div v-else-if="data.settings && data.settings.bowler_overall_stats==1" class="_playerCard">
+
+
+    <div v-else-if="data.settings && data.settings.bowler_overall_stats==1" class="_playerCard_con">
+    <div  class="_playerCard">
         <div class="_playerCard_top">
         <div class="_playerCard_top_left">
           <p class="_playerCard_name">
@@ -329,7 +329,7 @@
         </div>
       </div>
     </div>
-  
+  </div>
 
         <!-- strike batsman player batting status  -->
     <div v-else-if="data.settings && data.settings.strike_batsman_overall_stats==1" class="_playerCard_con">
@@ -525,8 +525,8 @@
     </div>
 
      <!-- player match status  -->
-
-      <div class="_playerCard"  v-else-if="data.settings && teamWicket.length>0 && data.settings.scorecard_with_last_wicket==1">
+     <div  v-else-if="data.settings && teamWicket.length>0 && data.settings.scorecard_with_last_wicket==1" class="_playerCard_con">
+      <div class="_playerCard" >
       <div class="_playerCard_top">
         <div class="_playerCard_top_left">
           <p class="_playerCard_name">
@@ -566,7 +566,7 @@
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span></span>
-          
+
         </p>
         <p class="_playerCard_stike">
           Strike rate
@@ -609,7 +609,7 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span></span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span>b</span>
@@ -625,7 +625,7 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Hit</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span>b</span>
@@ -637,12 +637,12 @@
         </p>
       </div>
 
-      
+
       <div class="_playerCard_wicket_main" v-if="data.bowling_summary && teamWicket[teamWicket.length-1].wicket_type=='LBW' && teamWicket.length>0">
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>lbw</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span>b</span>
@@ -658,7 +658,7 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Hit</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span>b</span>
@@ -674,11 +674,11 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Absent</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span></span>
-          
+
         </p>
         <p class="_playerCard_stike">
           Strike rate
@@ -690,11 +690,11 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Time Out</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span></span>
-          
+
         </p>
         <p class="_playerCard_stike">
           Strike rate
@@ -706,11 +706,11 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Retired</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span></span>
-          
+
         </p>
         <p class="_playerCard_stike">
           Strike rate
@@ -722,11 +722,11 @@
         <p class="_playerCard_ass">
           <span style="display: none;"></span>
           <span>Action Out</span>
-         
+
         </p>
         <p class="_playerCard_ass _playerCard_ball">
           <span></span>
-          
+
         </p>
         <p class="_playerCard_stike">
           Strike rate
@@ -751,16 +751,16 @@
       </div>
 
     </div>
-
+    </div>
      <!-- batting score card  -->
     <div class="_batsmanScore_con" v-else-if="this.data.settings && this.data.settings.batting_summary==1">
        <div class="_batsmanScore">
       <div class="_batsmanScore_top">
         <div class="_batsmanScore_top_left">
           <div class="_batsmanScore_top_team">
-            <p class="_batsmanScore_top_team_one"> {{ this.data.batting_team.team_name.slice(0,35)}}</p>
+            <p class="_batsmanScore_top_team_one"> {{ this.data.batting_team.team_name.slice(0,30)}}</p>
             <p class="_batsmanScore_top_team_v">V</p>
-            <p class="_batsmanScore_top_team_two"> {{this.data.bowling_team.team_name.slice(0,35)}}</p>
+            <p class="_batsmanScore_top_team_two"> {{this.data.bowling_team.team_name.slice(0,30)}}</p>
           </div>
 
           <p class="_batsmanScore_match">{{this.data.batting_summary[0].match_type}}</p>
@@ -794,7 +794,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -808,7 +808,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>lbw</span>
-              
+
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -820,7 +820,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -840,13 +840,13 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-               
+
             </p>
           </div>
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -861,7 +861,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>std</span>
-               {{item.stumped_by.first_name ?item.stumped_by.first_name.slice(0,12):''}} 
+               {{item.stumped_by.first_name ?item.stumped_by.first_name.slice(0,12):''}}
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -873,7 +873,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -899,7 +899,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -912,7 +912,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -924,7 +924,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -939,7 +939,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-            
+
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -951,7 +951,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -965,7 +965,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>hit</span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -977,7 +977,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -992,7 +992,7 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>hit</span>
-            
+
             </p>
           </div>
           <div class="_batsmanScore_out">
@@ -1004,7 +1004,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1018,19 +1018,19 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>Absent</span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-              
+
             </p>
           </div>
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1044,19 +1044,19 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>Time Out</span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-              
+
             </p>
           </div>
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1070,19 +1070,19 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>Retired</span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-              
+
             </p>
           </div>
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1097,19 +1097,19 @@
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span>Action Out</span>
-             
+
             </p>
           </div>
           <div class="_batsmanScore_out">
             <p class="_batsmanScore_out_text">
               <span></span>
-              
+
             </p>
           </div>
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1128,7 +1128,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              {{item.runs_achieved}} 
+              {{item.runs_achieved}}
               <span>{{item.balls_faced}}</span>
             </p>
           </div>
@@ -1149,7 +1149,7 @@
 
           <div class="_batsmanScore_runs">
             <p class="_batsmanScore_runs_text">
-              
+
               <span></span>
             </p>
           </div>
@@ -1166,7 +1166,7 @@
 
      <!-- team bowling card  -->
      <div class="team_bowling_score_card_super" v-else-if="data.settings && data.settings.bowling_summary==1 && data.bowling_summary">
-      <div class="_batsmanScore_con">
+      <div class="_bolwerScore_con">
     <!-- Card -->
     <div class="_batsmanScore">
       <div class="_batsmanScore_top">
@@ -1233,14 +1233,14 @@
         </div>
         <!-- item -->
 
-        
+
         <!-- item -->
-        
+
         <!-- item -->
         <div class="_bowler_item">
         </div>
         <!-- item -->
-        
+
         <!-- item -->
         <div class="_bowler_item">
         </div>
@@ -1276,11 +1276,9 @@
           <div class="score">
             <p class="bowling_team">
               <template v-if="data.bowling_team">
-                    <!-- {{myname.slice(0,5)}} -->
                     {{data.bowling_team.team_short_name.slice(0,5)}}
                 </template> v <span class="batting_team">
                     <template v-if="data.batting_team">
-                        <!-- {{myname.slice(0,5)}} -->
                         {{data.batting_team.team_short_name.slice(0,5)}}
                     </template>
                 </span>
@@ -1341,7 +1339,6 @@
           <div class="bowler_run_wicket">
             <p>
                 <template v-if="data.bowler && data.bowler.bowler">
-                  <!-- {{myname.slice(0,8)}} -->
                     {{data.bowler.bowler.first_name.slice(0,8) }}
                 </template></p>
             <p class="bowler_run_wicket_p_second"  v-if="data.bowler">
@@ -1352,7 +1349,7 @@
 
           <div class="over_every_ball">
             <!-- 6 6 2 3 1 6 6 -->
-                <!-- <ul>
+                <ul>
                   <li class="_scre_crcle" v-if="data.bowler && data.bowler.over_details">
                     <div v-for="(item,index) in data.bowler.over_details" :key="index" class="_scre_crcle_inner">
 
@@ -1374,7 +1371,7 @@
                         <span class="_tv_score_crcl_spn" v-if="item.down_circle_value">{{item.down_circle_value}}</span>
                     </div>
                  </li>
-                </ul> -->
+                </ul>
           </div>
 
         </div>
@@ -1423,7 +1420,6 @@ export default {
     new_batsman:[],
     new_batsman_details_limited_match_average:0,
     new_batsman_details_test_match_average:0,
-    myname:''
     };
   },
 
@@ -1471,7 +1467,6 @@ export default {
         }
 
 
-        this.myname='aaaaaaaaaaaaaaaaaaaa'
         // new batsman
            this.new_batsman=[];
         for(let i=0;i<this.data.batting_summary.length; i++){
@@ -1610,6 +1605,7 @@ export default {
 body{
     /* font-family:Poppins; */
     /* background-color: rgb(237, 233, 233); */
+    position: relative;
  }
  .scorecard_width{
    width: 22%;
@@ -1629,6 +1625,8 @@ body{
   display: flex;
   height: 145px;
   width: 99vw;
+  position: absolute;
+  bottom: 8px;
   /* margin-bottom: 25px; */
   /* flex-basis: 0;
         flex-grow: 1; */
@@ -2041,8 +2039,12 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
   font-size: 13px;
   font-weight: bold;
 }
+.over_every_ball ul{
+  display: flex;
+}
 .over_every_ball ul li{
   list-style-type: none;
+  display: flex;
 }
 .stream_text {
   height: 31%;
@@ -2325,9 +2327,18 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 
 
 /* team bowling card  */
- ._batsmanScore_con {
+.team_bowling_score_card_super{
+  vertical-align: bottom !important;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  bottom: 5px;
+  width: 99vw;
+}
+ ._bolwerScore_con {
       margin-top: 50px;
-      margin-bottom: 50px;
+      margin: 0 auto;
+      /* margin-bottom: 50px; */
   }
   ._batsmanScore {
       width: 1006px;
@@ -2418,7 +2429,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       line-height: 18px;
   /* identical to box height */
       text-transform: uppercase;
-  
+
   /* Secondary */
       color: #171A23;
   }
@@ -2431,7 +2442,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
   ._batsmanScore_item{
       padding: 0px 40px;
       height: 55px;
-  
+
   /* Secondary */
       background: #171A23;
       border-radius: 30px;
@@ -2451,7 +2462,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       line-height: 45px;
   /* identical to box height */
       text-transform: uppercase;
-  
+
   /* White */
       color: #FFFFFF;
   }
@@ -2466,8 +2477,8 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-size: 20px;
       line-height: 30px;
   /* identical to box height */
-  
-  
+
+
   /* White */
       color: #FFFFFF;
       margin: 0;
@@ -2479,8 +2490,8 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-size: 20px;
       line-height: 30px;
   /* identical to box height */
-  
-  
+
+
   /* White */
       color: #FFFFFF;
   }
@@ -2498,7 +2509,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
   /* identical to box height */
       text-align: right;
       text-transform: uppercase;
-  
+
   /* White */
       color: #FFFFFF;
       margin: 0;
@@ -2572,7 +2583,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 }
 ._bowler_list{
     width: 973px;
-    
+
 
 /* Primary */
     border: 2px solid #FEC514;
@@ -2662,9 +2673,9 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 
 /* batting score card  */
 ._batsmanScore_con {
-      overflow-x: scroll;
+      /* overflow-x: scroll; */
+      /* margin-bottom: 50px; */
       margin-top: 50px;
-      margin-bottom: 50px;
   }
   ._batsmanScore {
       width: 1006px;
@@ -2693,7 +2704,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-size: 35px;
+      font-size: 30px;
       line-height: 52px;
       text-align: center;
       text-transform: uppercase;
@@ -2755,7 +2766,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       line-height: 0;
   /* identical to box height */
       text-transform: uppercase;
-  
+
   /* Secondary */
       color: #171A23;
   }
@@ -2768,7 +2779,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
   ._batsmanScore_item{
       padding: 0px 40px;
       height: 55px;
-  
+
   /* Secondary */
       background: #171A23;
       border-radius: 30px;
@@ -2788,7 +2799,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       line-height: 45px;
   /* identical to box height */
       text-transform: uppercase;
-  
+
   /* White */
       color: #FFFFFF;
   }
@@ -2803,8 +2814,8 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-size: 20px;
       line-height: 30px;
   /* identical to box height */
-  
-  
+
+
   /* White */
       color: #FFFFFF;
       margin: 0;
@@ -2816,8 +2827,8 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
       font-size: 20px;
       line-height: 30px;
   /* identical to box height */
-  
-  
+
+
   /* White */
       color: #FFFFFF;
   }
@@ -2835,7 +2846,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
   /* identical to box height */
       text-align: right;
       text-transform: uppercase;
-  
+
   /* White */
       color: #FFFFFF;
       margin: 0;
@@ -3089,12 +3100,15 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 /* player batting status */
 
 ._playerCard_con {
-    margin-top: 150px;
-    overflow-x: scroll;
+    /* margin-top: 150px; */
+    width: 98vw;
+    /* margin: 0 auto; */
+    position: absolute;
+    bottom: 10px;
 }
 ._playerCard {
-    max-width: 1200px;
-    margin: 40px auto;
+    width: 1200px;
+    margin: 0 auto;
 }
 ._playerCard_top {
     width: 1000px;
@@ -3790,10 +3804,10 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    font-size: 13px;
-    color: #fff;
-    font-weight: 600;
-    background: #1a235a;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    /* background: #1a235a; */
     text-transform: uppercase;
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
@@ -3806,7 +3820,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
      display: block;
      border-radius: 50%;
     } */
-._scre_crcle ._active4{
+/* ._scre_crcle ._active4{
     background: #1B998B;
 }
 ._scre_crcle ._active6{
@@ -3814,7 +3828,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 }
 ._scre_crcle ._active_w{
     background: #E84855;
-}
+} */
 
 ._scre_crcle_inner {
     display: -webkit-box;
@@ -3842,7 +3856,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 ._tv_score_crcl{
     width: 21px;
     height: 21px;
-    font-size: 11px;
+    font-size: 14px;
 }
 ._tv_score_cntry_scre{
     font-size: 22px;
@@ -4051,13 +4065,13 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 ._tv_score_crcl {
     width: 18px;
     height: 18px;
-    font-size: 10px;
+    font-size: 14px;
 }
 ._scre_crcle_inner{
     position: relative;
 }
 ._tv_score_crcl_spn {
-    font-size: 9px;
+    font-size: 14px;
     line-height: 16px;
 }
 ._tv_score_ovr {
@@ -4170,7 +4184,7 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 ._tv_score_crcl {
     width: 20px;
     height: 20px;
-    font-size: 10px;
+    font-size: 14px;
 }
 ._scre_crcle_inner{
     position: relative;
