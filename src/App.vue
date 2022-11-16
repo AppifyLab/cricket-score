@@ -1606,6 +1606,8 @@ body{
     /* font-family:Poppins; */
     /* background-color: rgb(237, 233, 233); */
     position: relative;
+    padding: 0;
+    margin: 0;
  }
  .scorecard_width{
    width: 22%;
@@ -3105,9 +3107,10 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 /* player batting status */
 
 ._playerCard_con {
-    /* margin-top: 150px; */
     width: 98vw;
-    /* margin: 0 auto; */
+    /* margin-top: auto;
+    margin-bottom: 0; */
+    margin: 0 auto;
     position: absolute;
     bottom: 10px;
 }
@@ -4266,11 +4269,9 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
 @media screen and (max-width: 1230px) {
   ._playerCard_con{
     overflow-x: scroll;
-    margin: 20px auto;
   }
   ._playerCard{
     overflow-x: scroll;
-    margin: 20px auto;
   }
   .bowling_team{
       width: 70%;
@@ -4392,14 +4393,16 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
     position: relative;
   }
   .body{
-    position: absolute;
+    margin-bottom: 10px;
+    /* position: absolute;
     top: 10px;
-    bottom: auto;
+    bottom: auto; */
   }
   ._playerCard_con{
-    position: absolute;
+    margin-bottom: 10px;
+    /* position: absolute;
     top: 10px;
-    bottom: auto;
+    bottom: auto; */
   }
 }
 </style>
