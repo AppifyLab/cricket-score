@@ -4384,89 +4384,22 @@ line-height: 38px;color: #fff;flex:  0 0 auto;}
     overflow-x: scroll;
   }
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 900px) {
    .team_bowling_score_card_super{
     overflow-x: scroll;
   }
-
-}
-@media screen and (max-width: 900px) {
-  /* .player_bowling_status_first{
-    width: 80%;
-  } */
-  /* .team_bowling_score_card_head{
-    width: 920px;
-  } */
-   /* player match status  */
-  /* .player_match_status {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  body{
+    position: relative;
   }
-  .player_match_status_second_second_p {
-    text-align: center;
-  }
-  .player_match_status_first {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .player_match_status_second {
-    width: 94%;
-  } */
-    /* player batting status  */
-  /* .player_batting_status {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  } */
-  /* .strike_through{
+  .body{
     position: absolute;
-    top: 137px;
-    bottom: -4px;
-    width: 96.2%;
-    height: 3px;
-    z-index: 2;
-    background-color: #FEC514;
-  } */
-  /* .player_batting_status_first {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    top: 10px;
+    bottom: auto;
   }
-  .player_batting_status_first{
-    gap: 5px;
-  }
-  .player_batting_status_first_p_first{
-    text-align: center;
-    width: 70%;
-  }
-  .player_batting_status_first_p_second{
-    text-align: center;
-    width: 30%;
-  }
-  .player_batting_status_second {
-    width: 80%;
-  }
-  .player_batting_status_second_table,
-  .player_batting_status_second_tr th,
-  .player_batting_status_second_tr td {
-    background-color: #171A23;
-    padding: 10px 12px;
-    border-radius: 10px;
-  } */
-}
-@media screen and (max-width:800px){
-  .player_match_status_head {
-    overflow-x: scroll;
-  }
-
-  .player_batting_head{
-    overflow-x: scroll;
+  ._playerCard_con{
+    position: absolute;
+    top: 10px;
+    bottom: auto;
   }
 }
 </style>
