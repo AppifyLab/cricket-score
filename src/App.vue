@@ -232,7 +232,7 @@
        <ul>
               <li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
                   <span v-if="item.is_on_strike==1">
-                    <div class="player_match_status_head">
+                    <div class="player_match_status_head _playerCard_con">
                       <div class="player_match_status">
                         <div class="player_match_status_first">
                           <p class="bowler_over_status">{{item.batter.first_name}} {{item.batter.last_name}} <span class="bowler_over_status_small"> &nbsp; {{item.batter.batting_style? item.batter.batting_style:null}} </span></p>
@@ -249,7 +249,7 @@
        <ul>
               <li v-for="(item,index) in data.batsmans" :key="index" v-if="data.batsmans">
                   <span v-if="item.is_on_strike==0">
-                    <div class="player_match_status_head">
+                    <div class="player_match_status_head _playerCard_con">
                       <div class="player_match_status">
                         <div class="player_match_status_first">
                           <p class="bowler_over_status">{{item.batter.first_name}} {{item.batter.last_name}} <span class="bowler_over_status_small">&nbsp; {{item.batter.batting_style? item.batter.batting_style:null}} </span></p>
@@ -262,7 +262,7 @@
         </ul>
     </template>
     <template v-else-if="data.settings && data.settings.bowler_match_stats==1">
-      <div class="player_match_status_head">
+      <div class="player_match_status_head _playerCard_con">
                       <div class="player_match_status">
                         <div class="player_match_status_first" v-if="data.bowler && data.bowler.bowler">
                           <p class="bowler_over_status">{{data.bowler.bowler.first_name }} {{data.bowler.bowler.last_name}}</p>
